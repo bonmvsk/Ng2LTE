@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from "app/Guard/AuthGuard";
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' }
 ];
 
 @NgModule({
@@ -16,5 +16,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
-
-export const routedComponents = [LoginComponent];

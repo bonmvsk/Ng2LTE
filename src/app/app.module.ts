@@ -10,13 +10,12 @@ import 'hammerjs';
 import { AppRoutingModule } from './app.routes';
 import { FooterModule } from './widgets/footer.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from "app/Guard/AuthGuard";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     DashboardComponent
   ],
   imports: [
@@ -29,6 +28,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     [MaterialModule]
   ],
   providers: [
+    AuthGuard,
     [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   ],
   bootstrap: [AppComponent]
